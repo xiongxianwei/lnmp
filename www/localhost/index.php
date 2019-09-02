@@ -22,6 +22,7 @@ function getMysqlVersion()
     if (extension_loaded('PDO_MYSQL')) {
         try {
             $dbh = new PDO('mysql:host=mysql;dbname=mysql', 'root', '123456');
+            $dbh->query('SET NAMES utf8');
             $sth = $dbh->query('SELECT VERSION() as version');
             $info = $sth->fetch();
         } catch (PDOException $e) {
